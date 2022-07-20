@@ -1,0 +1,60 @@
+$warna-dasar: salmon;
+
+// h1{
+//     color: $warna-dasar;
+//     font-family: Arial, Helvetica, sans-serif;
+//     font-size: 3em;
+//     text-align: center;
+// }
+
+// h1 {
+    // menatur sebuah warna dengan banyak metode
+//     color: adjust-color($color: $warna-dasar, $red: -100, $green: 250, $blue: 50);
+// }
+
+// h1 {
+//     // mengatur / memutar posisi warna dengan berlawanan arah jarum jam dalam satuan derjat(deg)
+//     color: adjust-hue($color: $warna-dasar, $degrees: 200deg);
+// }
+
+// h1 {
+//     // memberi warna komplementer / warna yang berlawanan (180deg)
+//     color: complement($color: $warna-dasar);
+// }
+
+// h1 {
+//     // menggelapkan warna
+//     color: darken($color: $warna-dasar, $amount: 25%);
+// }
+
+// h1 {
+//     // tingkat kemurnian dari sebuah warna / menerangkan / menambah warna
+//     color: saturate($color: $warna-dasar, $amount: 0);
+// }
+
+// h1 {
+//     // semakin banyak akan semakin menghilangkan warna warna
+//     color: desaturate($color: $warna-dasar, $amount: 20%);
+// }
+
+// h1 {
+//     // membuat warna menjadi desaturate 100%
+//     color: grayscale($color: $warna-dasar);
+// }
+
+// h1 {
+//     // mencampurkan warna
+//     color: mix($warna-dasar, #ffff00, 25%);
+// }
+
+// h1 {
+//     // membuat element yang transparent menjadi solid
+//     color: fade-in(rgba(250,118,144,0.2), $amount: 0.5);
+// }
+
+h1 {
+    // membuat element yang solid menjadi transparent
+    color: fade-out($color: $warna-dasar, $amount: 0.4)
+}
+
+

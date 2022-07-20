@@ -1,0 +1,129 @@
+// FLOW CONTROL PADA SASS
+@mixin profile-pic($size, $circle:false) {
+    width: $size;
+    height: $size;
+    border: 5px solid white;
+    box-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.3);
+    
+    @if $circle {
+        border-radius: 50%;
+    }
+}
+
+// @if
+.square-profile {
+    @include profile-pic(200px, $circle:false );
+}
+
+.circle-profile {
+    @include profile-pic(80px, $circle:true );
+}
+
+// @else
+$light-bg : #ffffff;
+$light-text : #000000;
+$dark-bg : #c0c0c0;
+$dark-text : #80ffff;
+
+@mixin color-mode($light-mode:true) {
+    @if $light-mode {
+        background-color: $light-bg;
+        color: $light-text;
+    } 
+    @else{
+        background-color: $dark-bg;
+        color: $dark-text;
+    }
+}
+
+.nav {
+    @include color-mode($light-mode:false);
+}
+
+@mixin triangle ($size, $color, $direction) {
+    
+
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size / 2;
+    // karena border ada 4 sisi maka bisa membuat trianggle dengan set property dan value seperti di atas
+    // @else if
+        @if $direction == up {
+            border-bottom-color: $color;
+        }@else if $direction == down {
+            border-top-color: $color;
+        }@else if $direction == right {
+            border-left-color: $color;
+        }@else{
+            border-right-color: $color;
+        }
+}
+
+.right{
+    @include triangle(2em, #80ffff , right );
+}
+
+// perulangan @for pada SASS
+// $color:$dark-text;
+// .gradient{
+//     margin: 0;
+//     padding: 0;
+//     list-style: none;
+
+//     @for $i from 1 to 11 {
+//         // interpolasi = #{parameter} di gunakan untuk mengambil isi variable pada SASS
+//         li:nth-child(#{$i}){
+//             padding: 4px;
+//             // function value lighten = untuk mengelola warna
+//             background-color: lighten($color,$i * 2%);
+//         }
+//     }
+// }
+
+// perulangan @while pada SASS
+$color:$dark-text;
+.gradient{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    $i: 1;
+    @while $i < 11 {
+        // interpolasi = #{parameter} di gunakan pada for di SASS
+        li:nth-child(#{$i}){
+            padding: 4px;
+            // function value lighten = untuk mengelola warna
+            background-color: lighten($color, $i * 2%);
+        }
+        $i : $i +1;
+    }
+}
+
+// perulangan @each pada SASS untuk MAP
+$socials-colors:(
+    'youtube' : red,
+    'facebook' : #398df4,
+    'twitter' : #0061c1,
+    'instagram' : #afcf30
+);
+
+.socials {
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    li {
+        list-style: none;
+    }
+    // interpolasi = #{parameter} di gunakan pada for di SASS
+    // $social = key , $color = value
+    @each $social, $color in $socials-colors {
+        // di beri titik dia awal (.) karena akan memberi warna pada tiap-tiap class di element htmlnya
+        // pemberian warna pada tiap-tiap class li
+        .#{$social}{
+            color :$color;
+        }
+    }
+}

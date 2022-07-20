@@ -1,0 +1,62 @@
+// nesting SASS
+// .main{
+//     background-color: darkturquoise;
+
+//     .main-heading{
+//         font-size: 2em ;
+//     }
+
+//     .main-paragraph{
+//         font-size: 1.4em;
+//     }
+// }
+
+// .main, footer{
+//     h1, p{
+//         letter-spacing: 1px;
+//     }
+// }
+
+//  parent selector
+
+// .main{
+//     //  Dengan menambahkan operator (&) pada child class / class di dalam sarang parent bisa menargetkan parent selector / induk (class) dari selector pembuka (.main) pada nesting
+//     .container &{
+//         background-color: lightgreen;
+//     }
+
+//     .main-heading{
+//         font-size: 2em ;
+//     }
+//     &:hover{
+//         background-color: salmon;
+//     }
+// }
+
+.main{
+// tanda (&) operator yang akan selalu mengacu pada pada class parent (.main)/ selector class pembuka pada nesting
+// beri operator (&) 2 kali untuk memuncul kan class "PARENTNYA" setelah di generate
+    & &-heading{
+        font-size: 2em ;
+        background-color: aqua;
+    }
+
+    & &-paragraph{
+        font-size: 1.4em;
+        background-color: aqua;
+    }
+}
+
+.footer{
+    // tanda (&) operator yang akan selalu mengacu pada pada class parent (.main)
+    // beri operator (&) dua kali ( & &-heading) untuk memuncul kan class "PARENTNYA" setelah di generate
+    & &-heading{
+            font-size: 2em ;
+            background-color: chartreuse;
+        }
+    
+        & &-paragraph{
+            font-size: 1.4em;
+            background-color: chartreuse;
+        }
+    }

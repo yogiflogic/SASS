@@ -1,0 +1,17 @@
+.container {
+  border: 10px solid #00ff00;
+  padding: 25px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1 {
+  color: #ff0000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #00ffff;
+}
+/*# sourceMappingURL=main.css.map */

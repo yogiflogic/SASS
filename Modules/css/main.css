@@ -1,0 +1,53 @@
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.header ul li {
+  display: inline-block;
+}
+.header ul li {
+  background-color: black;
+  padding: 0.7em;
+}
+.header ul a {
+  color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 600px;
+  height: 400px;
+  border-radius: 30px;
+  border: 1px solid #e5e9f2;
+  background-color: rgba(255, 255, 255, 0.46);
+  background-image: url(../../img/1.png);
+}
+.container .box {
+  width: 60px;
+  height: 60px;
+  background-color: olivedrab;
+  text-align: center;
+  line-height: 60px;
+}
+
+.footer {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer li {
+  display: inline-block;
+}
+.footer li {
+  padding: 0.4em;
+  background-color: salmon;
+}
+.footer a {
+  color: white;
+}
+
+/*# sourceMappingURL=main.css.map */

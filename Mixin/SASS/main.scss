@@ -1,0 +1,62 @@
+// mixin tanpa parameter
+// cara membuat mixin
+@mixin inline-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+        display: inline-block;
+    }
+}
+
+.header ul{
+
+    // cara memamnggil mixin
+    @include inline-list();
+        li{
+            background-color:black;
+            padding: 0.7em;
+        }
+
+        a {
+            color: white;
+        }
+}
+
+.footer{
+    @include inline-list();
+        li {
+            padding: 0.4em;
+            background-color:salmon;
+        }
+
+        a {
+            color: white;
+        }
+}
+
+// mixin dengan parameter
+@mixin flex-box($direction: row, $space: center ) {
+    display: flex;
+    justify-content: $space;
+    align-items: center ;
+    flex-direction: $direction;
+}
+
+.container {
+
+    @include flex-box(row-reverse, space-evenly);
+    width: 600px;
+    height: 400px;
+    background-color: lightgreen;
+
+    .box {
+
+        width: 60px;
+        height: 60px;
+        background-color: olivedrab;
+        text-align: center;
+        line-height: 60px;
+        
+    }
+}

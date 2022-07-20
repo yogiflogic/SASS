@@ -1,0 +1,14 @@
+// cara menggunakan @use untuk memanggil mixin
+@use 'mixin' as m;
+
+.footer{
+    @include m.inline-list();
+        li {
+            padding: 0.4em;
+            background-color:salmon;
+        }
+
+        a {
+            color: white;
+        }
+}

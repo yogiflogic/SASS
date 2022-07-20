@@ -1,0 +1,53 @@
+//Variable versi CSS :
+// variable pada CSS (ada kemungkinan belum banyak support pada beberapa browser karna ini adalah teknologi terbaru dari CSS)
+//  Variable pada CSS Wajib berada dalam element (:root{ property: value;}) , Untuk semua element yang berada di dalam root agar bisa mengakses variable ini
+// :root {
+//     --primary-color:#00ff00;
+//     --secondary-color:#ff8040;
+//     --text-color:#ff0000;
+// }
+
+// body{
+//     //Cara memanggil variable versi CSS property:var(nama variable);
+//     background-color: var(--primary-color);
+// }
+
+// h1{
+//     color: var(--text-color);
+// }
+
+// Variable versi SASS :
+// variable global yang bisa di akses element manapun
+$secondary_color:#ff8040;
+$text-color:#ff0000;
+
+// meskipun memiliki nama variable yang sama antara global dan lokal ke duanya akan tetap menampilkan value sesuai scopenya masing2, kecuali variable lokal di tambahkan (!global) maka value ini lah yang akan di tampilkan
+
+.container{
+    // variable local hanya bisa di akses dalam scope yang sama termasuk nesting
+    // variable local bisa di jadikan variable GLOBAL dengan cara menambahkan (!global) di akhir value ($primary-color:#00ff00 !global;)
+    $primary-color:#00ff00;
+    // Cara memanggil variable versi SASS property : $namavariable;
+    border: 10px solid $primary-color;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+h1{
+    color: $text-color;
+}
+
+// map pada SASS sama seperti array asosiatif pada PHP
+$alert:(
+    // key : value
+    'danger' : red,
+    'success' : #00ffff,
+    'warning' : #f4d10b
+);
+
+body{
+    margin: 0;
+    padding: 0;
+    // cara memanggil map pada SASS map-get($map: , $key: );
+    background-color: map-get($alert, 'success');
+}

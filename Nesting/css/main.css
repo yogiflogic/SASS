@@ -1,0 +1,20 @@
+.main .main-heading {
+  font-size: 2em;
+  background-color: aqua;
+}
+
+.main .main-paragraph {
+  font-size: 1.4em;
+  background-color: aqua;
+}
+
+.footer .footer-heading {
+  font-size: 2em;
+  background-color: chartreuse;
+}
+
+.footer .footer-paragraph {
+  font-size: 1.4em;
+  background-color: chartreuse;
+}
+/*# sourceMappingURL=main.css.map */

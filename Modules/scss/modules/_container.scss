@@ -1,0 +1,21 @@
+// cara menggunakan @use untuk memanggil mixin
+@use 'mixin' as m;
+
+.container {
+
+    @include m.flex-box(row-reverse, space-between);
+    width: 600px;
+    height: 400px;
+    border-radius: 30px;
+    border: 1px solid #e5e9f2;
+    background-color: rgba(255, 255, 255, 0.46);
+    background-image: url(../../img/1.png);
+
+    .box {
+        width: 60px;
+        height: 60px;
+        background-color: olivedrab;
+        text-align: center;
+        line-height: 60px;
+    }
+}

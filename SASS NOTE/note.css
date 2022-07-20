@@ -1,0 +1,197 @@
+/* https://sass-lang.com/
+
+Instal SASS di VSCODE :
+- Install live SASS plugin vscode
+- buat file dengan ekstensi main.scss
+- Agar lebih rapi buat folder tersendiri untuk file dengan ekstensi main.scss
+- Cari preferences -> setting -> live SASS -> format -> setting.json -> ganti value savePATH jadi "css"
+- klik ulang watch SASS jika sedang aktif
+- klik watch SASS di bagian bawah vscode
+- ketik file sass/cssnya di file main.scss
+
+Sass adalah bahasa skrip preprosesor yang ditafsirkan atau dikompilasi ke dalam Cascading Style Sheets. 
+SassScript adalah bahasa scripting itu sendiri. Sass terdiri dari dua sintaks. 
+Sintaks asli, yang disebut "sintaks indentasi," menggunakan sintaksis yang mirip dengan Haml.
+
+solusi dari SASS PreProcessor
+- variable ($variable : value)
+- mixin seperti function
+- import & USE membuat CSS jadi modular dan gampang di kelola
+- Memimiliki Operator & Build-In Function
+- Nested CSS = CSS bersarang
+- SELECTORNYA menggunak TAG HTML
+
+CSS PreProcessor :
+- SASS
+- LESS
+- STYLUS
+
+ALasan menggunakan SASS:
+- Mempermudah penulisan
+- Mempermudahan pengololaan
+- Memiliki banyakan fungsi build-in
+- Kita dapat membuat fungsi sendiri
+- Kita dapat memodifikasi framwork CSS (Bootstrap $ Materialize)
+- Banyak perusahaan menggunakan SASS
+
+Pilih Ekstensinya SASS atau SCSS
+- SASS = penulisannya tidak memiliki kurung kurawal dan titik koma ({};)
+- SCSS = penulisannya memiliki kurung kurawal dan titik koma ({};)
+- Outputnya setelah di compile tetap menghasilkan CSS
+- Harus di Intal dulu atau menggunakan VSCODE EKSTENSION (live sass compiler)
+
+Alasan untuk tidak mengunakan SASS
+- Banyak fitur SASS sekarang yang telah dimiiliki oleh CSS
+- Untuk project besar bukan untuk project kecil
+- Styled components CSS/JS (yang menggunakan framework JS sudah banyak yang beralih kesini)
+
+
+Nesting :
+-> Bisa menyimpan selector CSS di selector yang lain
+
+Parent selector :
+- Dengan menambahkan operator (&) pada child class / class di dalam sarang parent bisa menargetkan parent selector / induk (class) dari selector pembuka (.main) pada nesting
+- Tanda (&) operator yang akan selalu mengacu pada pada class parent (.main)/ selector class pembuka pada nesting
+- Beri operator (&) 2 kali ( & &-heading) untuk memuncul kan class "PARENTNYA" setelah di generate
+
+Variable :
+Variable versi CSS :
+-> Variable pada CSS (ada kemungkinan belum banyak support pada beberapa browser karna ini adalah teknologi terbaru dari CSS)
+-> Variable pada CSS Wajib berada dalam element (:root{ property: value;}) , Untuk semua element yang berada di dalam root agar bisa mengakses variable ini
+Cara memanggil variable versi CSS property:var(nama variable);
+
+Variable versi SASS :
+variable global yang bisa di akses element manapun
+
+$secondary_color: value;
+Cara memanggil variable versi SASS property : $namavariable;
+
+variable local :
+
+-> variable local hanya bisa di akses dalam scope yang sama termasuk nesting
+-> variable local bisa di jadikan variable GLOBAL dengan cara menambahkan (!global) di akhir value ($primary-color:#00ff00 !global;)
+
+.container{
+
+    $primary-color:#00ff00;
+
+    border: 10px solid $primary-color;
+}
+
+Variable loal VS Variable Global :
+-> Meskipun memiliki nama variable yang sama antara global dan lokal ke duanya akan tetap menampilkan value sesuai scopenya masing2, kecuali variable lokal di tambahkan (!global) maka value ini lah yang akan di tampilkan
+
+Map pada SASS :
+-> map pada SASS sama seperti array asosiatif pada PHP :
+
+$alert:(
+    //key : value
+    'danger' : red,
+    'success' : #00ffff,
+    'warning' : #f4d10b
+);
+
+Cara memanggil MAP:
+Cara memanggil map pada SASS map-get($map: , $key: );
+
+background-color: map-get($alert, 'success');
+
+MIXIN :
+-> kumpulan style yang dapat digunakan berulang-ulang, penggunaan layaknya function pada programming language
+
+Mixin tanpa parameter :
+@mixin <nama mixin bebas> : untuk membuat mixin
+@include <nama mixin>() : untuk memanggil mixin
+
+Mixin dengan parameter :
+
+Membuat mixin
+@mixin <nama mixin(nama variable: value dari property css(default)) -> isi parameter boleh lebih dari 1
+
+@mixin nama($variable:green){
+    color:$variable;
+}
+
+Memanggil mixin :
+@include <nama mixin(value(value property dari css));
+
+Modules :
+keyword:
+@import & @use
+
+- Tanda underscore (_) di awal nama file (_main.scss) adalah untuk menandakan bahwa file ini bertipe "PARSIAL" (bukan file utama),
+dari SCSS
+- File yang ada underscore (_) di depannya "TIDAK AKAN" melalui kompilasi , karna file ini akan di panggil oleh file SCSS UTAMA (main.scss)
+
+_main.scss : file parsial yang tidak akan melalui kompilasi
+
+File-file yang "MODULARISASI" pastikan di beri underscore (_) di awal pemberian nama filenya
+
+SASS menyarankan untuk tidak menggukan @import lagi tapi menggunakan @use
+Urutkan hasil import sesuai urutan pada tampilan halamannya
+cara @import mixin dll (parsial)
+import cara ke-1
+ @import 'dir/namafile';
+ @import 'dir/namafile';
+
+import cara ke-2
+
+@import 'dir/namafile','dir/namafile';
+
+Cara menggunakan @use :
+
+Untuk menggunakan @use pada SASS instal dulu "DART SASS" pada OS secara global, karena extension (Live Sass Compiler) pada VSCODE belum bisa menanganinya,
+selain itu agar bisa juga menjalankan perintah (sass scss/main.scss css/main.css(untuk mengubah file scss ke css untuk menggunakan @use)) pada terminal agar (@use) nya bisa berfungsi
+
+cara instal :
+- akses ke dokumentasi resmi dan pilih , cari Install Anywhere (Stand alone) ikuti perintahnya
+
+Memanggil @use:
+- panggil @use di setiap halaman (file) yang membutuhkannya
+    
+    @use 'namafile'
+    atau jika di file folder lain (sesuaikan pathnya dan bisa di beri alis(as) pada penamaanya)
+    @use 'dir/tipe style(mixin)'
+
+    lalu panggil nama mixin dengan namespace (nama file yang akan di @use) :
+
+    include mixin.nama-mixin();
+
+FLOW CONTROL SASS (jarang di gunakan):
+
+- @if @else @else if
+- @for
+- @while
+- @each
+
+Karena border ada 4 sisi maka bisa membuat trianggle dengan set property dan value yang di beri transparent
+
+Interpolasi = #{parameter} di gunakan untuk mengambil isi variable pada SASS
+
+BUILD-IN FUNCTION /MODULES:
+
+Build-In Modules (fungsi SASS bawaan):
+
+https://sass-lang.com/documentation/modules
+- Color
+- List
+- Map
+- Math
+- Meta
+- Selector
+- String 
+ */
+
+/* Color
+===============
+
+adjust
+complement
+darken
+lighten
+saturate
+desaturate
+grayscale
+mix
+fade-in
+fade-out */

@@ -1,0 +1,17 @@
+// SASS menyarankan untuk tidak menggukan @import lagi tapi menggunakan @use
+// urutkan hasil import sesuai urutan pada tampilan halamannya
+// cara import mixin dll (parsial)
+// import cara ke-1
+// @import 'modules/mixin';
+// @import 'modules/header';
+// @import 'modules/container';
+// @import 'modules/footer';
+
+// import cara ke-2
+
+// @import 'modules/mixin','modules/header','modules/container','modules/footer';
+
+// cara menggunakan @use
+@use 'modules/header';
+@use 'modules/container';
+@use 'modules/footer';
